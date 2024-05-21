@@ -99,7 +99,7 @@ plt.show()
 
 ```bat
 @echo off
-cd convenience.py的路径
+cd convenience.py的文件夹路径
 python convenience.py
 pause
 ```
