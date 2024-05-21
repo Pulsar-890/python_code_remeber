@@ -61,7 +61,7 @@ plt.show()
 
 ​	那就可以打开这个工具，输入"011 画图"
 
-![image-20240521000505262](C:\Users\29249\AppData\Roaming\Typora\typora-user-images\image-20240521000505262.png)
+![image-20240521000505262](https://github.com/Pulsar-890/python_code_remeber/blob/main/example_pictures/image-20240521000505262.png)
 
 ​	然后就会打开这个画图.txt，接下来将上面的代码粘贴进去并保存
 
