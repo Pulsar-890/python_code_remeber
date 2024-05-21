@@ -61,15 +61,15 @@ plt.show()
 
 ​	那就可以打开这个工具，输入"011 画图"
 
-![image-20240521000505262](C:\Users\29249\AppData\Roaming\Typora\typora-user-images\image-20240521000505262.png)
+![image-20240521000505262](https://github.com/Pulsar-890/python_code_remeber/blob/main/example_pictures/image-20240521000505262.png)
 
 ​	然后就会打开这个画图.txt，接下来将上面的代码粘贴进去并保存
 
-![image-20240521000822021](C:\Users\29249\AppData\Roaming\Typora\typora-user-images\image-20240521000822021.png)
+![image-20240521000822021](https://github.com/Pulsar-890/python_code_remeber/blob/main/example_pictures/image-20240521000815295.png)
 
 ​	然后回到命令行，输入1
 
-![image-20240521001056431](C:\Users\29249\AppData\Roaming\Typora\typora-user-images\image-20240521001056431.png)
+![image-20240521001056431](https://github.com/Pulsar-890/python_code_remeber/blob/main/example_pictures/image-20240521001056431.png)
 
 ​	以后小明就可以直接方便调用这段代码啦
 
@@ -85,15 +85,15 @@ plt.show()
 
 ​	那他就可以输入"001"，对这段代码段进行添加，粘贴进去，保存。再输入1，非常的棒！
 
-![image-20240521001709655](C:\Users\29249\AppData\Roaming\Typora\typora-user-images\image-20240521001709655.png)
+![image-20240521001709655](https://github.com/Pulsar-890/python_code_remeber/blob/main/example_pictures/image-20240521001709655.png)
 
 ​	小明后来还想，这个名字不够明确，他打算改个名字，改叫plot画图，那也好办，只需要输入"031 plot 画图"，就可以了
 
-![image-20240521001923478](C:\Users\29249\AppData\Roaming\Typora\typora-user-images\image-20240521001923478.png)
+![image-20240521001923478](https://github.com/Pulsar-890/python_code_remeber/blob/main/example_pictures/image-20240521001923478.png)
 
 ​	后来，小明觉得这个程序设计的不行，我要对它进行魔改，我来定义这个程序应该长什么样。那么，他就输入了"02"直接进入到了这个文件夹里，这样就可以对里面的内容进行手动修改啦。
 
-![image-20240521002143336](C:\Users\29249\AppData\Roaming\Typora\typora-user-images\image-20240521002143336.png)
+![image-20240521002143336](https://github.com/Pulsar-890/python_code_remeber/blob/main/example_pictures/image-20240521002143336.png)
 
 ​	最后的最后，为了进一步提高效率，我们可以在桌面创建一个txt文本文件，将以下内容写进文本文件中，然后将文件名改为常用程序.bat，就可以在需要的时候双击快速使用啦。
 
@@ -103,7 +103,7 @@ python convenience.py的路径
 pause
 ```
 
-
+![image-20240521083522533](https://github.com/Pulsar-890/python_code_remeber/blob/main/example_pictures/image-20240521083522533.png)
 
 #### 参与贡献
 
