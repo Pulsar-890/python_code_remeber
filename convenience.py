@@ -1,4 +1,5 @@
 import os
+import traceback
 path=os.getcwd()+"\\"
 filename="管理内容.txt"
 SEpa="\n"
@@ -53,78 +54,83 @@ def initial(width=24):
             if nums%blocks==0:print()
     return con
 
-if not os.path.exists(path+filename):
-    print("初始化中...")
-    txt("w",["选项显示宽度:24","0.管理内容"])
-while 1:
-    con=initial()
-    a=input("\n请输入：")
-    if a[0]=="0":
-        if len(a)==1:a=input('''
-管理选项：
-0.修改文件
-1.新建文件
-2.打开文件夹
-3.文件重命名
-4.删除文件
-5.更改选项显示宽度(1-120)
-输入其他任意字符退出...
-注：需要执行的语句加///，不需要打印的部分前后各加一行：###
-请输入：''')
-        else:a=a[1:]
-        if a[0]=="2":open_file("文件夹")
-        if a[0]=="5":
-            if len(a)!=1:width=a[1:]
-            else:width=input("请输入文本宽度：")
-            while not width.isdigit() or not 1<=int(width)<=120:
-                width=input("输入范围有误，请重新输入：")
-            x=txt("r")
-            x[0]="选项显示宽度(tab数):"+width
-            txt("w",x)
-            print("选项显示宽度调整成功！")
-        elif a[0] in ["0","1","3","4"]:
-            if len(a)!=1:name=a[1:]
-            elif a[0]!="1":name=input("请输入文件序号：")
-            else:name=input("请输入文件序号（回车则由系统选择）：")
-            if a[0]=="1":
-                name=name.split()
-                while name and name[0] in con:name[0]=input(name[0]+" 序号已存在，请重新输入：")
-                if not name[:1]:
-                    name=[create_number()]+name[1:]
-                    print("系统选择的序号为",name[0])
-                if len(name)==1:name.append(input("请输入文件名："))
-                while name[1] in con.values():name[1]=input(name[1]+" 文件已存在，请重新输入：")
-                txt('a',[''],name[1]+'.txt')
-                txt('a',[f"{name[0]}.{name[1]}"])
-                open_file(f"文件{name[1]}.txt",name[1]+".txt")
-            elif a[0]=="3":
-                name=name.split()
-                if name[0] not in con:
-                    print(f"未找到序号！")
-                    continue
-                if len(name)==1:name.append(input("请输入新的文件名："))
-                txt1=txt("r")
-                txt1[txt1.index(name[0]+"."+con[name[0]])]=name[0]+"."+name[1]
-                os.rename(con[name[0]]+'.txt',name[1]+'.txt')
-                txt('w',txt1)
-                print(f"\n文件{con[name[0]]}已重命名为{name[1]}")
-            elif name not in con :print(f"未找到序号！")
-            elif a[0]=="4":
-                if input("删除后的文件无法找回，请确认你要删除这个文件?[Y/N]").lower() in ["y","yes"]:
+try:
+    if not os.path.exists(path+filename):
+        print("初始化中...")
+        txt("w",["选项显示宽度:24","0.管理内容"])
+    while 1:
+        con=initial()
+        a=input("\n请输入：")
+        if a[0]=="0":
+            if len(a)==1:a=input('''
+    管理选项：
+    0.修改文件
+    1.新建文件
+    2.打开文件夹
+    3.文件重命名
+    4.删除文件
+    5.更改选项显示宽度(1-120)
+    输入其他任意字符退出...
+    注：需要执行的语句加///，不需要打印的部分前后各加一行：###
+    请输入：''')
+            else:a=a[1:]
+            if a[0]=="2":open_file("文件夹")
+            if a[0]=="5":
+                if len(a)!=1:width=a[1:]
+                else:width=input("请输入文本宽度：")
+                while not width.isdigit() or not 1<=int(width)<=120:
+                    width=input("输入范围有误，请重新输入：")
+                x=txt("r")
+                x[0]="选项显示宽度(tab数):"+width
+                txt("w",x)
+                print("选项显示宽度调整成功！")
+            elif a[0] in ["0","1","3","4"]:
+                if len(a)!=1:name=a[1:]
+                elif a[0]!="1":name=input("请输入文件序号：")
+                else:name=input("请输入文件序号（回车则由系统选择）：")
+                if a[0]=="1":
+                    name=name.split()
+                    while name and name[0] in con:name[0]=input(name[0]+" 序号已存在，请重新输入：")
+                    if not name[:1]:
+                        name=[create_number()]+name[1:]
+                        print("系统选择的序号为",name[0])
+                    if len(name)==1:name.append(input("请输入文件名："))
+                    while name[1] in con.values():name[1]=input(name[1]+" 文件已存在，请重新输入：")
+                    txt('a',[''],name[1]+'.txt')
+                    txt('a',[f"{name[0]}.{name[1]}"])
+                    open_file(f"文件{name[1]}.txt",name[1]+".txt")
+                elif a[0]=="3":
+                    name=name.split()
+                    if name[0] not in con:
+                        print(f"未找到序号！")
+                        continue
+                    if len(name)==1:name.append(input("请输入新的文件名："))
                     txt1=txt("r")
-                    txt1.pop(txt1.index(name+"."+con[name]))
-                    os.remove(con[name]+'.txt')
+                    txt1[txt1.index(name[0]+"."+con[name[0]])]=name[0]+"."+name[1]
+                    os.rename(con[name[0]]+'.txt',name[1]+'.txt')
                     txt('w',txt1)
-                    print(f"\n文件{con[name]}已删除")
-            else:open_file(f"文件{name}.txt",con[name]+".txt")
-    else:
-        if a in con:
-            anno=1
-            for i in ['']+txt('r',0,con[a]+'.txt'):
-                if i[:3]=="///":eval(i[3:])
-                elif i[:3]=="###":anno=1-anno
-                elif anno:print(i)
-        else:print("文件不存在！")
-    print()
-
+                    print(f"\n文件{con[name[0]]}已重命名为{name[1]}")
+                elif name not in con :print(f"未找到序号！")
+                elif a[0]=="4":
+                    if input("删除后的文件无法找回，请确认你要删除这个文件?[Y/N]").lower() in ["y","yes"]:
+                        txt1=txt("r")
+                        txt1.pop(txt1.index(name+"."+con[name]))
+                        os.remove(con[name]+'.txt')
+                        txt('w',txt1)
+                        print(f"\n文件{con[name]}已删除")
+                else:open_file(f"文件{name}.txt",con[name]+".txt")
+        else:
+            if a in con:
+                anno=1
+                for i in ['']+txt('r',0,con[a]+'.txt'):
+                    if i[:3]=="///":
+                        try:eval(i[3:])
+                        except Exception:traceback.print_exc()
+                    elif i[:3]=="###":anno=1-anno
+                    elif anno:print(i)
+            else:print("文件不存在！")
+        print()
+except Exception as e:
+    traceback.print_exc()  # 打印异常追踪信息
+    while 1:input("程序出错:请将报错信息及之前运行的内容截图并联系开发者")
 
